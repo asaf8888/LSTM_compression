@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../rnn-tutorial-rnnlm/.idea/rnn-tutorial-rnnlm.iml" filepath="$PROJECT_DIR$/../rnn-tutorial-rnnlm/.idea/rnn-tutorial-rnnlm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/tutorial.iml" filepath="$PROJECT_DIR$/.idea/tutorial.iml" />
+    </modules>
+  </component>
+</project>
