@@ -23,12 +23,15 @@ class MyModel(tf.keras.Model):
 
 
 class OneStep(tf.keras.Model):
-    def __init__(self, model, chars_from_ids, ids_from_chars, temperature=1.0):
+    def __init__(self, model, vocab, temperature=1.0):
         super().__init__()
         self.temperature = temperature
         self.model = model
-        self.chars_from_ids = chars_from_ids
-        self.ids_from_chars = ids_from_chars
+        self.vocab = vocab
+        self.ids_from_chars = tf.keras.layers.StringLookup(
+            vocabulary=list(vocab), mask_token=None)
+        self.chars_from_ids = tf.keras.layers.StringLookup(
+            vocabulary=self.ids_from_chars.get_vocabulary(), invert=True, mask_token=None)
 
         # Create a mask to prevent "[UNK]" from being generated.
         skip_ids = self.ids_from_chars(['[UNK]'])[:, None]
@@ -37,11 +40,24 @@ class OneStep(tf.keras.Model):
             values=[-float('inf')] * len(skip_ids),
             indices=skip_ids,
             # Match the shape to the vocabulary
-            dense_shape=[len(ids_from_chars.get_vocabulary())])
+            dense_shape=[len(self.ids_from_chars.get_vocabulary())])
         self.prediction_mask = tf.sparse.to_dense(sparse_mask)
 
     @tf.function
     def generate_one_step(self, inputs, states=None):
+        predicted_logits, states = self.get_logits(inputs, states)
+        # Sample the output logits to generate token IDs.
+        predicted_ids = tf.random.categorical(predicted_logits, num_samples=1)
+        predicted_ids = tf.squeeze(predicted_ids, axis=-1)
+
+        # Convert from token ids to characters
+        predicted_chars = self.chars_from_ids(predicted_ids)
+
+        # Return the characters and model state.
+        return predicted_chars, states
+
+    @tf.function
+    def get_logits(self, inputs, states=None):
         # Convert strings to token IDs.
         input_chars = tf.strings.unicode_split(inputs, 'UTF-8')
         input_ids = self.ids_from_chars(input_chars).to_tensor()
@@ -55,15 +71,13 @@ class OneStep(tf.keras.Model):
         predicted_logits = predicted_logits / self.temperature
         # Apply the prediction mask: prevent "[UNK]" from being generated.
         predicted_logits = predicted_logits + self.prediction_mask
-        predicted_probs = tf.nn.softmax(predicted_logits)
-        tf.print(predicted_probs, summarize=-1)
+        return predicted_logits, states
 
-        # Sample the output logits to generate token IDs.
-        predicted_ids = tf.random.categorical(predicted_logits, num_samples=1)
-        predicted_ids = tf.squeeze(predicted_ids, axis=-1)
+    @tf.function
+    def get_probs(self, inputs, states=None):
+        logits, states = self.get_logits(inputs, states)
+        probs = tf.nn.softmax(logits)
 
-        # Convert from token ids to characters
-        predicted_chars = self.chars_from_ids(predicted_ids)
+        return probs, states
 
-        # Return the characters and model state.
-        return predicted_chars, states
+

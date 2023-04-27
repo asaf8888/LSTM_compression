@@ -4,11 +4,11 @@ import time
 
 model = MyModel(vocab_size, embedding_dim, rnn_units)
 model.load_weights(tf.train.latest_checkpoint('./training_checkpoints'))
-one_step_model = OneStep(model, chars_from_ids, ids_from_chars)
+one_step_model = OneStep(model, vocab)
 
 start = time.time()
 states = None
-next_char = tf.constant(['And God said '])
+next_char = tf.constant(['G'])
 result = [next_char]
 
 for n in range(1):
