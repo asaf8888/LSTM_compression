@@ -1,5 +1,5 @@
-from my_constants import *
-from my_model import MyModel, OneStep
+from prediction_model.model_constants import *
+from prediction_model.my_model import MyModel, OneStep
 import time
 
 model = MyModel(vocab_size, embedding_dim, rnn_units)

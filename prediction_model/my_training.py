@@ -1,9 +1,8 @@
-import tensorflow as tf
 import re
 import numpy
 import os
-from my_model import MyModel
-from my_constants import *
+from prediction_model.my_model import MyModel
+from prediction_model.model_constants import *
 print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
 
 

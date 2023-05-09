@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b5557532-d607-4b63-83c9-9188108b851d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/compression/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/compression/compression_utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/my_consugation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/not_bible.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/compression/compression_constants.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prediction_model/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../rnn-tutorial-rnnlm/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../rnn-tutorial-rnnlm/LICENSE" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../rnn-tutorial-rnnlm/NOTICE" beforeDir="false" />
@@ -18,14 +16,19 @@
       <change beforePath="$PROJECT_DIR$/../rnn-tutorial-rnnlm/train-theano.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../rnn-tutorial-rnnlm/utils.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compressed_test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/compressed_test.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compression.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_compression.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generate.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_generate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/huffman.py" beforeDir="false" afterPath="$PROJECT_DIR$/huffman.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bible.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test data/bible.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compressed_bible" beforeDir="false" afterPath="$PROJECT_DIR$/test data/compressed_bible" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compressed_test.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/huffman.py" beforeDir="false" afterPath="$PROJECT_DIR$/compression/huffman.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_compression.py" beforeDir="false" afterPath="$PROJECT_DIR$/compression/my_compression.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_model/model_constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_consugation.py" beforeDir="false" afterPath="$PROJECT_DIR$/compression/my_consugation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_generate.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_model/my_generate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_model/my_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_training.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_model/my_training.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/not_bible.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test data/not_bible.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/not_compressed_bible" beforeDir="false" afterPath="$PROJECT_DIR$/test data/not_compressed_bible" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/training.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_training.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,22 +39,43 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my_constants.py">
+        <entry file="file://$PROJECT_DIR$/prediction_model/model_constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+            <state relative-caret-position="357">
+              <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/compression/my_compression.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="32" column="56" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
+              <folding>
+                <element signature="e#0#46#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my_compression.py">
+        <entry file="file://$PROJECT_DIR$/compression/my_consugation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+            <state relative-caret-position="153">
+              <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#0#46#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/compression/compression_constants.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="45" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -59,17 +83,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/compression/compression_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="66" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="66" />
+            <state relative-caret-position="68">
+              <caret line="4" column="46" lean-forward="true" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/huffman.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/compression/huffman.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="116" column="11" selection-start-line="116" selection-start-column="11" selection-end-line="116" selection-end-column="11" />
+            <state relative-caret-position="374">
+              <caret line="118" column="24" selection-start-line="118" selection-start-column="24" selection-end-line="118" selection-end-column="24" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -78,28 +102,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="445" selection-start-column="445" selection-end-column="445" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my_consugation.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my_generate.py">
+        <entry file="file://$PROJECT_DIR$/prediction_model/my_generate.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
               <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
@@ -108,10 +111,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my_training.py">
+        <entry file="file://$PROJECT_DIR$/prediction_model/my_training.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="503">
-              <caret line="57" column="28" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
+              <caret line="56" column="28" selection-start-line="56" selection-start-column="28" selection-end-line="56" selection-end-column="28" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -120,7 +123,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/not_bible.txt">
+        <entry file="file://$PROJECT_DIR$/test data/not_bible.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret column="287" selection-end-column="445" />
@@ -129,7 +132,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my_model.py">
+        <entry file="file://$PROJECT_DIR$/prediction_model/my_model.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="486">
               <caret line="79" selection-start-line="79" selection-end-line="79" />
@@ -184,6 +187,10 @@
         <option value="$PROJECT_DIR$/my_consugation.py" />
         <option value="$PROJECT_DIR$/my_compression.py" />
         <option value="$PROJECT_DIR$/huffman.py" />
+        <option value="$PROJECT_DIR$/prediction_model/my_constants.py" />
+        <option value="$PROJECT_DIR$/compression/compression_constants.py" />
+        <option value="$PROJECT_DIR$/compression/my_consugation.py" />
+        <option value="$PROJECT_DIR$/compression/my_compression.py" />
       </list>
     </option>
   </component>
@@ -214,6 +221,16 @@
             <path>
               <item name="tutorial" type="b2602c69:ProjectViewProjectNode" />
               <item name="tutorial" type="462c0819:PsiDirectoryNode" />
+              <item name="prediction_model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tutorial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tutorial" type="462c0819:PsiDirectoryNode" />
+              <item name="test data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tutorial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tutorial" type="462c0819:PsiDirectoryNode" />
               <item name="training_checkpoints" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -229,6 +246,9 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\asaf\יב\compression learning\tutorial\compression" />
+      <recent name="D:\asaf\יב\compression learning\tutorial\prediction_model" />
+      <recent name="D:\asaf\יב\compression learning\tutorial\test data" />
       <recent name="D:\asaf\יב\compression learning\tutorial\training_checkpoints" />
       <recent name="D:\asaf\יב\compression learning\tutorial" />
     </key>
@@ -261,7 +281,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\asaf\יב\compression learning\tutorial\my_compression.py" />
+      <option name="SCRIPT_NAME" value="D:\asaf\יב\compression learning\tutorial\compression\my_compression.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -282,7 +302,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\asaf\יב\compression learning\tutorial\my_generate.py" />
+      <option name="SCRIPT_NAME" value="D:\asaf\יב\compression learning\tutorial\prediction_model\my_generate.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -303,7 +323,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/huffman.py" />
+      <option name="SCRIPT_NAME" value="D:\asaf\יב\compression learning\tutorial\compression\huffman.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -324,7 +344,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/my_consugation.py" />
+      <option name="SCRIPT_NAME" value="D:\asaf\יב\compression learning\tutorial\compression\my_consugation.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -345,7 +365,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\asaf\יב\compression learning\tutorial\my_training.py" />
+      <option name="SCRIPT_NAME" value="D:\asaf\יב\compression learning\tutorial\prediction_model\my_training.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -495,9 +515,6 @@
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python39/Lib/site-packages/keras/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/compressed_test.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python39/Lib/site-packages/keras/layers/preprocessing/index_lookup.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6035">
@@ -512,7 +529,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bible.txt">
+    <entry file="file://$PROJECT_DIR$/test data/bible.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret selection-end-line="1" selection-end-column="154" />
@@ -526,13 +543,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.PyCharmCE2018.3/system/python_stubs/1581818061/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -540,14 +550,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_generate.py">
+    <entry file="file://$PROJECT_DIR$/prediction_model/my_generate.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/not_bible.txt">
+    <entry file="file://$PROJECT_DIR$/prediction_model/my_training.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="503">
+          <caret line="56" column="28" selection-start-line="56" selection-start-column="28" selection-end-line="56" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prediction_model/my_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test data/not_bible.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="287" selection-end-column="445" />
@@ -561,56 +588,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_training.py">
+    <entry file="file://$PROJECT_DIR$/compression/huffman.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="503">
-          <caret line="57" column="28" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
+        <state relative-caret-position="374">
+          <caret line="118" column="24" selection-start-line="118" selection-start-column="24" selection-end-line="118" selection-end-column="24" />
           <folding>
-            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="79" selection-start-line="79" selection-end-line="79" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/compressed_test.txt">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/compression/compression_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="66" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="66" />
+        <state relative-caret-position="68">
+          <caret line="4" column="46" lean-forward="true" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_consugation.py">
+    <entry file="file://$PROJECT_DIR$/compression/compression_constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="28" lean-forward="true" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+        <state relative-caret-position="17">
+          <caret line="1" column="45" selection-start-line="1" selection-start-column="45" selection-end-line="1" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/prediction_model/model_constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compression/my_consugation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#46#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my_compression.py">
+    <entry file="file://$PROJECT_DIR$/compression/my_compression.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+        <state relative-caret-position="435">
+          <caret line="32" column="56" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/huffman.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="116" column="11" selection-start-line="116" selection-start-column="11" selection-end-line="116" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#46#0" expanded="true" />
           </folding>
         </state>
       </provider>
