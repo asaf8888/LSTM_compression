@@ -1,10 +1,11 @@
 import tensorflow as tf
-import keras
 import re
 import numpy
 import os
-from model import MyModel
-from constants import *
+from my_model import MyModel
+from my_constants import *
+print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
+
 
 
 the_bible_raw = open('bible.txt', 'r')

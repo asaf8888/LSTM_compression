@@ -80,12 +80,12 @@ def encode_token(list_of_probs, token):
     return coding_bidict.inverse.get(token)
 
 
-def decode_first_token_in_stream(list_of_probs, string):
+def decode_first_token_in_stream(list_of_probs, string, start_index):
     coding_tree = create_coding_tree(list_of_probs)
-    for bit in range(len(string)):
+    for bit in range(start_index, len(string)):
         coding_tree = coding_tree.left if string[bit] == '0' else coding_tree.right
         if coding_tree.data is not None:
-            return coding_tree.data, string[bit+1:len(string)]
+            return coding_tree.data, bit+1
 
 
 def encode_file(filename):
@@ -112,11 +112,9 @@ def extract_all_token_amount(text):
 
 def fit_data_to_bytes(encoded_data_in_bits):
     last_byte_size = bin(((len(encoded_data_in_bits) + 4) % 8)).replace("0b", "")
-    for i in range(3 - len(last_byte_size)):
-        last_byte_size = '0' + last_byte_size
+    last_byte_size = last_byte_size.rjust(3, '0')
     data = '1' + last_byte_size + encoded_data_in_bits
-    for i in range(8 - (len(data) % 8)):
-        data += '0'
+    data = data.ljust(len(data) + 8 - (len(data) % 8), '0')
     data_in_bytes = int(data, 2).to_bytes(len(data) // 8, byteorder='big')
     return data_in_bytes
 
@@ -125,8 +123,9 @@ def decode_file(filename, list_of_probs):
     input_bits = get_bits_from_file(filename)
     input_data = extract_data_bits(input_bits)
     output_tokens = []
-    while len(input_data) > 0:
-        decoded_token, input_data = decode_first_token_in_stream(list_of_probs, input_data)
+    start_index = 0
+    while len(input_data) - start_index > 0:
+        decoded_token, start_index = decode_first_token_in_stream(list_of_probs, input_data, start_index)
         output_tokens.append(decoded_token)
     output_text = "".join(output_tokens)
     return output_text

@@ -1,5 +1,5 @@
-from constants import *
-from model import MyModel, OneStep
+from my_constants import *
+from my_model import MyModel, OneStep
 import time
 
 model = MyModel(vocab_size, embedding_dim, rnn_units)
@@ -8,10 +8,10 @@ one_step_model = OneStep(model, vocab)
 
 start = time.time()
 states = None
-next_char = tf.constant(['G'])
+next_char = tf.constant(['In'])
 result = [next_char]
 
-for n in range(1):
+for n in range(5):
     next_char, states = one_step_model.generate_one_step(next_char, states=states)
     result.append(next_char)
 
