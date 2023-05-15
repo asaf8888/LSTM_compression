@@ -2,12 +2,14 @@ import re
 import numpy
 import os
 from prediction_model.my_model import MyModel
+from prediction_model.quantizable_model import get_quantizable_model, convert_to_tflite
 from prediction_model.model_constants import *
+import pathlib
 print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
 
 
 
-the_bible_raw = open('bible.txt', 'r')
+the_bible_raw = open('../test data/bible.txt', 'r')
 the_bible = the_bible_raw.readlines()
 the_bible_raw.close()
 
@@ -44,7 +46,7 @@ dataset = (
 vocab_size = len(ids_from_chars.get_vocabulary())
 print(f"vocab size: {vocab_size}")
 
-checkpoint_dir = './training_checkpoints'
+checkpoint_dir = '../small_bible_model'
 # Name of the checkpoint files
 
 checkpoint_prefix = os.path.join(checkpoint_dir, "ckpt_{epoch}")
@@ -57,4 +59,9 @@ model = MyModel(vocab_size=vocab_size, embedding_dim=embedding_dim, rnn_units=rn
 loss = tf.losses.SparseCategoricalCrossentropy(from_logits=True)
 model.compile(optimizer='adam', loss=loss, metrics='accuracy')
 history = model.fit(dataset, epochs=EPOCHS, callbacks=[checkpoint_callback])
+quant_model = get_quantizable_model(model)
+
+with open("../quantized_bible_model/model_quant.tflite", 'wb') as f:
+    f.write(convert_to_tflite(quant_model))
+
 

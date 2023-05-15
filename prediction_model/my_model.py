@@ -1,5 +1,5 @@
 import tensorflow as tf
-
+from prediction_model.model_constants import vocab_size
 
 
 class MyModel(tf.keras.Model):
@@ -45,19 +45,6 @@ class OneStep(tf.keras.Model):
         self.prediction_mask = tf.sparse.to_dense(sparse_mask)
 
     @tf.function
-    def generate_one_step(self, inputs, states=None):
-        predicted_logits, states = self.get_logits(inputs, states)
-        # Sample the output logits to generate token IDs.
-        predicted_ids = tf.random.categorical(predicted_logits, num_samples=1)
-        predicted_ids = tf.squeeze(predicted_ids, axis=-1)
-
-        # Convert from token ids to characters
-        predicted_chars = self.chars_from_ids(predicted_ids)
-
-        # Return the characters and model state.
-        return predicted_chars, states
-
-    @tf.function
     def get_logits(self, inputs, states=None):
         # Convert strings to token IDs.
         input_chars = tf.strings.unicode_split(inputs, 'UTF-8')
@@ -80,5 +67,10 @@ class OneStep(tf.keras.Model):
         probs = tf.nn.softmax(logits)
 
         return probs, states
+
+
+
+
+
 
 

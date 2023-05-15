@@ -1,2 +1,2 @@
 
-general_model_path = './training_checkpoints'
+general_model_path = '../small_bible_model'

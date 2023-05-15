@@ -1,11 +1,11 @@
 import tensorflow as tf
 SEQ_LENGTH = 100
 
-BATCH_SIZE = 64
+BATCH_SIZE = 80
 
 BUFFER_SIZE = 10000
 
-EPOCHS = 150
+EPOCHS = 80
 
 # The embedding dimension
 embedding_dim = 256
