@@ -8,7 +8,7 @@ from compression.compression_constants import *
 import numpy as np
 
 
-def compress(filepath, interpreter, use_general_model=True):
+def compress(filepath, interpreter):
     one_step_model = QuantOneStep(interpreter, vocab)
 
     rng = np.random.default_rng()
