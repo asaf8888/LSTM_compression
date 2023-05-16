@@ -1,11 +1,11 @@
 import tensorflow as tf
-EPOCHS = 80
+EPOCHS = 10
 
 # The embedding dimension
-embedding_dim = 256
+embedding_dim = 8
 
 # Number of RNN units
-rnn_units = 1024
+rnn_units = 8
 
 vocab_size = 64
 vocab = [' ', '!', "'", '(', ')', ',', '-', '.', ':', ';', '?', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '|']

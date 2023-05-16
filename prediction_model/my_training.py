@@ -33,13 +33,13 @@ def text_from_ids(ids):
 
 
 ids_dataset = tf.data.Dataset.from_tensor_slices(ids_from_chars(the_bible))
-sequences = ids_dataset.batch(SEQ_LENGTH + 1, drop_remainder=True)
+sequences = ids_dataset.batch(100 + 1, drop_remainder=True)
 dataset = sequences.map(lambda x: (x[:-1], x[1:]))
 
 dataset = (
     dataset
-    .shuffle(BUFFER_SIZE)
-    .batch(BATCH_SIZE, drop_remainder=True)
+    .shuffle(10000)
+    .batch(64, drop_remainder=True)
     .prefetch(tf.data.experimental.AUTOTUNE))
 
 # Length of the vocabulary in StringLookup Layer

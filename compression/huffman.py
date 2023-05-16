@@ -4,6 +4,7 @@ import heapq
 from bidict import bidict
 from dataclasses import dataclass, field
 from typing import Any
+from collections import Counter
 
 
 @dataclass(order=True)
@@ -95,29 +96,13 @@ def decode_first_token_in_stream(list_of_probs, string, start_index):
 def encode_file(filename):
     input_file = open(filename, 'r')
     input_string = input_file.read()
-    list_of_probs = extract_all_token_amount(input_string)
+    list_of_probs = list(dict(Counter(input_string)))
     encoded_list = [encode_token(list_of_probs, token) for token in input_string]
     encoded_output = "".join(encoded_list)
     data_in_bytes = fit_data_to_bytes(encoded_output)
     compressed_file = open(f"compressed_{filename}", "wb")
     compressed_file.write(data_in_bytes)
     compressed_file.close()
-
-
-def extract_all_token_amount(text, unknown_cutoff=0):
-    vocab = {i: text.count(i) for i in set(text)}
-    vocab, unknown = compress_vocab_to_unknown(vocab, unknown_cutoff)
-    list_of_probs = list(vocab.items())
-    return list_of_probs, unknown
-
-
-def compress_vocab_to_unknown(vocab, cutoff):
-    total = sum(vocab.values())
-    cut_token_vocab = {key: value for key, value in vocab.items() if value/total < cutoff}
-    unknown = (list(cut_token_vocab.keys()), sum(cut_token_vocab.values()))
-    for key in unknown[0]:
-        vocab.pop(key)
-    return vocab, unknown
 
 
 def fit_data_to_bytes(encoded_data_in_bits):
