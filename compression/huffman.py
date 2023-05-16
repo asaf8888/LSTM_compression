@@ -29,9 +29,13 @@ class Node:
         return string
 
 
-def create_coding_tree(list_of_probs):
+def create_coding_tree(list_of_probs, unknown_tokens=None):
     single_letter_q = []
     complex_q = deque()
+    if unknown_tokens:
+        tokens, prob = unknown_tokens
+        single_token_prob = prob/len(tokens)
+        list_of_probs.extend([(token, single_token_prob) for token in tokens])
     for token, prob in list_of_probs:
         heapq.heappush(single_letter_q, (PrioritizedItem(prob, Node(token))))
 
@@ -55,8 +59,8 @@ def get_lowest_of_2q(some_heapq, some_deque):
         return heapq.heappop(some_heapq) if some_heapq[0] < some_deque[0] else some_deque.popleft()
 
 
-def create_coding(list_of_probs):
-    tree = create_coding_tree(list_of_probs)
+def create_coding(list_of_probs, unknown_tokens=None):
+    tree = create_coding_tree(list_of_probs, unknown_tokens)
     encoding_dict = create_coding_from_tree(tree)
     return bidict(encoding_dict)
 
@@ -100,14 +104,20 @@ def encode_file(filename):
     compressed_file.close()
 
 
-def extract_all_token_amount(text):
-    vocab = {}
-    for token in text:
-        if token not in vocab:
-            vocab[token] = 0
-        vocab[token] += 1
+def extract_all_token_amount(text, unknown_cutoff=0):
+    vocab = {i: text.count(i) for i in set(text)}
+    vocab, unknown = compress_vocab_to_unknown(vocab, unknown_cutoff)
     list_of_probs = list(vocab.items())
-    return list_of_probs
+    return list_of_probs, unknown
+
+
+def compress_vocab_to_unknown(vocab, cutoff):
+    total = sum(vocab.values())
+    cut_token_vocab = {key: value for key, value in vocab.items() if value/total < cutoff}
+    unknown = (list(cut_token_vocab.keys()), sum(cut_token_vocab.values()))
+    for key in unknown[0]:
+        vocab.pop(key)
+    return vocab, unknown
 
 
 def fit_data_to_bytes(encoded_data_in_bits):
@@ -147,9 +157,3 @@ def extract_data_bits(input_bits):
     return input_bits
 
 
-if __name__ == '__main__':
-    encode_file("test.txt")
-    input_file = open("test.txt", 'r')
-    input_string = input_file.read()
-    list_of_probs = extract_all_token_amount(input_string)
-    print(decode_file("compressed_test.txt", list_of_probs))
