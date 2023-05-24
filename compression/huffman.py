@@ -80,8 +80,8 @@ def create_coding_from_tree(head):
     return encoding_dict
 
 
-def encode_token(list_of_probs, token):
-    coding_bidict = create_coding(list_of_probs)
+def encode_token(list_of_probs, token, unkown_tokens=None):
+    coding_bidict = create_coding(list_of_probs, unkown_tokens)
     return coding_bidict.inverse.get(token)
 
 

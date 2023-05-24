@@ -1,6 +1,4 @@
 import tensorflow as tf
-from prediction_model.model_constants import vocab_size
-
 
 class MyModel(tf.keras.Model):
     def __init__(self, vocab_size, embedding_dim, rnn_units):

@@ -1,3 +1,8 @@
+from compression.huffman import create_coding
+import math
+import numpy as np
+from matplotlib import pyplot as plt
+
 def get_compression_ratio_coin_tosses(p, seq_len, clumping_size):
     # print(f"entropy per flip: {entropy_per_flip}")
     import random

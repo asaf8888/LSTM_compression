@@ -66,11 +66,9 @@ class QuantOneStep:
             vocabulary=self.ids_from_chars.get_vocabulary(), invert=True, mask_token=None)
 
     # @tf.function
-    def get_probabilty_weights(self, inputs, states):
+    def get_probabilty_weights(self, input_token, states):
         # Convert strings to token IDs.
-        input_chars = tf.strings.unicode_split(inputs, 'UTF-8')
-        input_ids = np.float32(self.ids_from_chars([input_chars]))
-        input_vectors = tf.one_hot(input_ids, vocab_size)
+        input_ids = np.array([[self.vocab[input_token]]], dtype=np.float32)
         self.interpreter.allocate_tensors()
         input_details = self.interpreter.get_input_details()
         output_details = self.interpreter.get_output_details()

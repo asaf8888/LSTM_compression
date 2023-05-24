@@ -4,6 +4,7 @@ from prediction_model.model_constants import *
 from compression.compression_constants import unknown_character_token
 from collections import Counter
 from prediction_model.quantizable_model import get_quantizable_model, convert_to_tflite
+import tensorflow as tf
 
 
 def get_vocabulary_and_mask(text, cutoff=0):
@@ -20,12 +21,8 @@ def get_vocabulary_and_mask(text, cutoff=0):
 
 
 def prepare_training_dataset(text, vocab, seq_lentgh=100, batch_size=64):
-    print(len(vocab))
-    # ids_from_chars = tf.keras.layers.StringLookup(
-    #     vocabulary=list(vocab), mask_token=None)
-    # print(1.1)
-    # # ids = ids_from_chars(text)
     ids = [vocab[token] for token in text]
+
     ids_dataset = tf.data.Dataset.from_tensor_slices(ids)
     sequences = ids_dataset.batch(seq_lentgh + 1, drop_remainder=True)
     dataset = sequences.map(lambda x: (x[:-1], x[1:]))
@@ -39,8 +36,6 @@ def prepare_training_dataset(text, vocab, seq_lentgh=100, batch_size=64):
 
 
 def get_trained_model(text, unknown_token_cutoff=0):
-    text = [list(x) for x in text]
-    text = list(numpy.concatenate(text).flat)
     vocab, unknown = get_vocabulary_and_mask(text, unknown_token_cutoff)
     vocab[unknown_character_token] = len(vocab)
     masked_text = [token if token in vocab.keys() else unknown_character_token for token in text]
@@ -56,7 +51,7 @@ def get_trained_model(text, unknown_token_cutoff=0):
 if __name__ == '__main__':
     print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
     file = open("../test data/bible.txt", 'r')
-    text = file.readlines()
+    text = file.read()
     file.close()
     model, (vocab, unknown) = get_trained_model(text)
     quant_model = get_quantizable_model(model)

@@ -4,6 +4,7 @@ from prediction_model.model_constants import *
 from compression.compression_utils import get_quant_model_probs, get_model_probs
 from compression.compression_constants import *
 import numpy as np
+import tensorflow as tf
 
 rng = np.random.default_rng()
 states = rng.random((1, rnn_units), dtype=np.float32)
