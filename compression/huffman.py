@@ -1,10 +1,10 @@
-from queue import PriorityQueue
 from collections import deque
 import heapq
 from bidict import bidict
 from dataclasses import dataclass, field
 from typing import Any
 from collections import Counter
+
 
 
 @dataclass(order=True)
@@ -35,7 +35,7 @@ def create_coding_tree(list_of_probs, unknown_tokens=None):
     complex_q = deque()
     if unknown_tokens:
         tokens, prob = unknown_tokens
-        single_token_prob = prob/len(tokens)
+        single_token_prob = prob / len(tokens)
         list_of_probs.extend([(token, single_token_prob) for token in tokens])
     for token, prob in list_of_probs:
         heapq.heappush(single_letter_q, (PrioritizedItem(prob, Node(token))))
@@ -90,7 +90,7 @@ def decode_first_token_in_stream(list_of_probs, string, start_index):
     for bit in range(start_index, len(string)):
         coding_tree = coding_tree.left if string[bit] == '0' else coding_tree.right
         if coding_tree.data is not None:
-            return coding_tree.data, bit+1
+            return coding_tree.data, bit + 1
 
 
 def encode_file(filename):
@@ -136,9 +136,10 @@ def get_bits_from_file(filename):
 def extract_data_bits(input_bits):
     last_byte_size = int(input_bits[1:4], 2)
     if last_byte_size != 0:
-        input_bits = input_bits[4:last_byte_size-8]
+        input_bits = input_bits[4:last_byte_size - 8]
     else:
         input_bits = input_bits[4:len(input_bits)]
     return input_bits
+
 
 
