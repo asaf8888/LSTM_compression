@@ -19,11 +19,8 @@ def get_quant_model_probs(quant_one_step_model, input_token, states):
 
 
 def compress_text(text, quantOneStep, unknown_tokens):
-
-    rng = np.random.default_rng(1)
-    states = rng.random((1, rnn_units), dtype=np.float32)
-    carry = rng.random((1, rnn_units), dtype=np.float32)
-
+    states = default_init_states
+    carry = default_init_carry
 
     first_char = text[0]
     next_char = first_char

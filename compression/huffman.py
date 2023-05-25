@@ -85,8 +85,8 @@ def encode_token(list_of_probs, token, unkown_tokens=None):
     return coding_bidict.inverse.get(token)
 
 
-def decode_first_token_in_stream(list_of_probs, string, start_index):
-    coding_tree = create_coding_tree(list_of_probs)
+def decode_first_token_in_stream(list_of_probs, string, start_index, unknown_tokens=None):
+    coding_tree = create_coding_tree(list_of_probs, unknown_tokens=unknown_tokens)
     for bit in range(start_index, len(string)):
         coding_tree = coding_tree.left if string[bit] == '0' else coding_tree.right
         if coding_tree.data is not None:
@@ -129,6 +129,7 @@ def decode_file(filename, list_of_probs):
 def get_bits_from_file(filename):
     input_file = open(filename, 'rb')
     input_string = input_file.read()
+    input_file.close()
     input_bits = bin(int.from_bytes(input_string, byteorder='big')).replace("0b", "")
     return input_bits
 
