@@ -18,9 +18,9 @@ def get_quant_model_probs(quant_one_step_model, input_token, states):
     return tuple(zip(list(correctly_ordered_vocabulary), probs)), states
 
 
-def compress_text(text, quantOneStep, unknown_tokens):
-    states = default_init_states
-    carry = default_init_carry
+def compress_text(text, quantOneStep, model_parameters, unknown_tokens):
+    states = model_parameters.default_init_states
+    carry = model_parameters.default_init_carry
 
     first_char = text[0]
     next_char = first_char

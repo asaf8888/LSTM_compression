@@ -35,13 +35,13 @@ def prepare_training_dataset(text, vocab, seq_lentgh=100, batch_size=64):
     return dataset
 
 
-def get_trained_model(text, unknown_token_cutoff=0):
+def get_trained_model(text, model_parameters, unknown_token_cutoff=0):
     vocab, unknown = get_vocabulary_and_mask(text, unknown_token_cutoff)
     vocab[unknown_character_token] = len(vocab)
     masked_text = [token if token in vocab.keys() else unknown_character_token for token in text]
     dataset = prepare_training_dataset(masked_text, vocab)
     vocab_size = len(vocab)
-    model = MyModel(vocab_size=vocab_size, embedding_dim=embedding_dim, rnn_units=rnn_units)
+    model = MyModel(vocab_size=vocab_size, embedding_dim=model_parameters.embedding_dim, rnn_units=model_parameters.rnn_units)
     loss = tf.losses.SparseCategoricalCrossentropy(from_logits=True)
     model.compile(optimizer='adam', loss=loss, metrics='accuracy')
     model.fit(dataset, epochs=EPOCHS)

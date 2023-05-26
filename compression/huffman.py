@@ -88,6 +88,8 @@ def encode_token(list_of_probs, token, unkown_tokens=None):
 def decode_first_token_in_stream(list_of_probs, string, start_index, unknown_tokens=None):
     coding_tree = create_coding_tree(list_of_probs, unknown_tokens=unknown_tokens)
     for bit in range(start_index, len(string)):
+        if start_index == 1100:
+            print(string[bit])
         coding_tree = coding_tree.left if string[bit] == '0' else coding_tree.right
         if coding_tree.data is not None:
             return coding_tree.data, bit + 1

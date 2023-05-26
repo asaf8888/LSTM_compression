@@ -26,22 +26,15 @@ import numpy as np
 rng = np.random.default_rng()
 
 
-def get_quantizable_model(model):
+def get_quantizable_model(model, model_parameters):
     input = keras.Input(shape=(1,), name="input")
-    hidden_state = keras.Input(shape=(rnn_units), name="lstm_hidden_state")
-    cell_state = keras.Input(shape=(rnn_units), name="lstm_cell_state")
+    hidden_state = keras.Input(shape=(model_parameters.rnn_units), name="lstm_hidden_state")
+    cell_state = keras.Input(shape=(model_parameters.rnn_units), name="lstm_cell_state")
     output, (new_hidden_state, new_cell_state) = model(
         input, states=[hidden_state, cell_state], return_state=True)
     model = keras.Model([input, hidden_state, cell_state],
                         [output, new_hidden_state, new_cell_state])
     return model
-
-
-def representative_dataset():
-    yield [rng.random((1, vocab_size), dtype=np.float32),
-           rng.random((1, rnn_units), dtype=np.float32),
-           rng.random((1, rnn_units), dtype=np.float32)]
-
 
 
 def convert_to_tflite(model):
@@ -52,8 +45,6 @@ def convert_to_tflite(model):
                                            tf.lite.OpsSet.SELECT_TF_OPS]
     tflite_model = converter.convert()
     return tflite_model
-
-
 
 
 class QuantOneStep:

@@ -7,14 +7,16 @@ from compression.compression_utils import get_quant_model_probs, deserialize_id_
 from compression.compression_constants import *
 
 
-def decompress(source_dir, target_path):
+def decompress(source_dir, target_path, model_parameters=None):
+    if not model_parameters:
+        model_parameters = ModelParameters.deserialize(f"{source_dir}/{model_parameters_filename}")
     vocab, unknown = deserialize_id_vocab(f"{source_dir}/{vocab_filename}")
     interpreter = tf.lite.Interpreter(model_path=f"{source_dir}/{model_filename}")
     one_step_model = QuantOneStep(interpreter, vocab)
 
     input_bits = get_bits_from_file(f"{source_dir}/{data_filename}")
     input_data = extract_data_bits(input_bits)
-    states = (default_init_states, default_init_carry)
+    states = (model_parameters.default_init_states, model_parameters.default_init_carry)
     first_char = chr(int(input_data[:8], 2))
     next_char = first_char
     output_tokens = [first_char]
