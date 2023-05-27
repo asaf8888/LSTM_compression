@@ -1,6 +1,6 @@
 import numpy as np
 import json
-EPOCHS = 1
+EPOCHS = 10
 
 
 class ModelParameters:

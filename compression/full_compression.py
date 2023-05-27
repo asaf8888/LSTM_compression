@@ -21,13 +21,13 @@ def compress(filepath, target_dir, model_parameters, train_target=None):
     serialize_id_vocab(f"{target_dir}/{vocab_filename}", vocab, unknown)
     quantizable_model = get_quantizable_model(model, model_parameters)
     quant_model = convert_to_tflite(quantizable_model)
+
     with open(f"{target_dir}/{model_filename}", 'wb') as f:
         f.write(quant_model)
 
     interpreter = tf.lite.Interpreter(model_content=quant_model)
     quant_one_step = QuantOneStep(interpreter, vocab)
     data_in_bytes = compress_text(input_string, quant_one_step, model_parameters, unknown)
-    print(len(data_in_bytes))
 
     compressed_file = open(f"{target_dir}/{data_filename}", "wb")
     compressed_file.write(data_in_bytes)

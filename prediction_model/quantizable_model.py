@@ -50,6 +50,12 @@ def convert_to_tflite(model):
 class QuantOneStep:
     def __init__(self, interpreter, vocab):
         self.interpreter = interpreter
+        print(interpreter.get_output_details()[0]['name'])
+        print(interpreter.get_output_details()[1]['name'])
+        print(interpreter.get_output_details()[2]['name'])
+        print(interpreter.get_input_details()[0]['name'])
+        print(interpreter.get_input_details()[1]['name'])
+        print(interpreter.get_input_details()[2]['name'])
         self.vocab = vocab
         self.ids_from_chars = tf.keras.layers.StringLookup(
             vocabulary=list(vocab), mask_token=None)
@@ -68,9 +74,16 @@ class QuantOneStep:
         self.interpreter.set_tensor(input_details[0]["index"], states[0])
         self.interpreter.set_tensor(input_details[1]["index"], states[1])
         self.interpreter.invoke()
-        result = self.interpreter.get_tensor(output_details[0]["index"])
+        result = None
+        carry = None
+        for output in output_details:
+            if output["name"] == "StatefulPartitionedCall:0":
+                result = self.interpreter.get_tensor(output["index"])
+            elif output["name"] == "StatefulPartitionedCall:1":
+                states = self.interpreter.get_tensor(output["index"])
+            elif output["name"] == "StatefulPartitionedCall:2":
+                carry = self.interpreter.get_tensor(output["index"])
+
         result = result[0, -1, :]
-        states = self.interpreter.get_tensor(output_details[2]["index"])
-        carry = self.interpreter.get_tensor(output_details[1]["index"])
 
         return result, (states, carry)
