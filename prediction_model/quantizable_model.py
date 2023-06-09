@@ -4,25 +4,6 @@ from keras import layers
 from prediction_model.model_constants import *
 import numpy as np
 
-
-# def get_quantizable_model(vocab_size, embedding_dim, rnn_units):
-#     input = keras.Input(shape=(1, vocab_size,), name="input")
-#     embedding = tf.keras.layers.Embedding(vocab_size, embedding_dim)
-#     embedded_input = embedding(input)[0, :, :, :]
-#     hidden_state = keras.Input(shape=(rnn_units,), name="lstm_hidden_state")
-#     cell_state = keras.Input(shape=(rnn_units,), name="lstm_cell_state")
-#     lstm = layers.LSTM(units=rnn_units, return_sequences=True,
-#                                                            return_state=True,
-#                                                            name="lstm",
-#                        stateful=True)
-#     lstm_output, new_hidden_state, new_cell_state = lstm(embedded_input)#), initial_state=[hidden_state, cell_state])
-#     dense = tf.keras.layers.Dense(vocab_size)
-#     output = dense(lstm_output)
-#     model = keras.Model([input],#, hidden_state, cell_state],
-#                         [output, new_hidden_state, new_cell_state])
-#     model.compile()
-#     return model
-
 rng = np.random.default_rng()
 
 
