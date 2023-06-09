@@ -40,7 +40,7 @@ def compress(filepath, target_dir, model_parameters, train_target=None):
 
 
 if __name__ == '__main__':
-    input_file = open("../test data/bible.txt", 'r')
-    input_string = input_file.read()
-    input_file.close()
-    compress("../test data/not_bible.txt", f"D:\\asaf\\יב\\compression learning\\tutorial\\test data\\compressed_not_bible", ModelParameters(256, 32), input_string)
+    # input_file = open("../test data/bible.txt", 'r')
+    # input_string = input_file.read()
+    # input_file.close()
+    compress("D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\bible.txt", f"D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\compressed_not_bible", ModelParameters(256, 32))

@@ -17,7 +17,9 @@ def get_vocabulary_and_mask(text, cutoff=0):
     vocab = dict(sorted(vocab.items(), key=lambda item: item[1], reverse=True))
     keys = list(vocab.keys())
     id_vocab = {keys[i]: i for i in range(len(keys))}
-    return id_vocab, unknown
+    vocab[unknown_character_token] = len(vocab)
+    masked_text = [token if token in vocab.keys() else unknown_character_token for token in text]
+    return masked_text, id_vocab, unknown
 
 
 def prepare_training_dataset(text, vocab, seq_lentgh=100, batch_size=64):
@@ -36,9 +38,7 @@ def prepare_training_dataset(text, vocab, seq_lentgh=100, batch_size=64):
 
 
 def get_trained_model(text, model_parameters, unknown_token_cutoff=0):
-    vocab, unknown = get_vocabulary_and_mask(text, unknown_token_cutoff)
-    vocab[unknown_character_token] = len(vocab)
-    masked_text = [token if token in vocab.keys() else unknown_character_token for token in text]
+    masked_text, vocab, unknown = get_vocabulary_and_mask(text, unknown_token_cutoff)
     dataset = prepare_training_dataset(masked_text, vocab)
     vocab_size = len(vocab)
     model = MyModel(vocab_size=vocab_size, embedding_dim=model_parameters.embedding_dim, rnn_units=model_parameters.rnn_units)
