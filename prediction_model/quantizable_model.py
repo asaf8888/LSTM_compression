@@ -37,9 +37,7 @@ class QuantModelWrapper:
         self.chars_from_ids = tf.keras.layers.StringLookup(
             vocabulary=self.ids_from_chars.get_vocabulary(), invert=True, mask_token=None)
 
-    # @tf.function
     def get_probabilty_weights(self, input_token, states):
-        # Convert strings to token IDs.
         input_ids = np.array([[self.vocab[input_token]]], dtype=np.float32)
         self.interpreter.allocate_tensors()
         input_details = self.interpreter.get_input_details()

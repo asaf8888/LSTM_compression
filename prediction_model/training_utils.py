@@ -1,9 +1,7 @@
-import numpy
 from prediction_model.my_model import MyModel
 from prediction_model.model_constants import *
 from compression.compression_constants import unknown_character_token
 from collections import Counter
-from prediction_model.quantizable_model import get_quantizable_model, convert_to_tflite
 import tensorflow as tf
 
 
@@ -47,15 +45,4 @@ def get_trained_model(text, model_parameters, unknown_token_cutoff=0):
     model.fit(dataset, epochs=EPOCHS)
     return model, (vocab, unknown)
 
-
-if __name__ == '__main__':
-    print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
-    file = open("../test data/bible.txt", 'r')
-    text = file.read()
-    file.close()
-    model, (vocab, unknown) = get_trained_model(text)
-    quant_model = get_quantizable_model(model)
-
-    with open("../quantized_bible_model/model_quant.tflite", 'wb') as f:
-        f.write(convert_to_tflite(quant_model))
 

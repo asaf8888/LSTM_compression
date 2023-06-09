@@ -1,5 +1,3 @@
-from prediction_model.model_constants import *
-from prediction_model.quantizable_model import QuantModelWrapper
 from compression.huffman import encode_token, fit_data_to_bytes
 from compression.compression_constants import unknown_character_token
 import numpy as np
@@ -30,8 +28,6 @@ def compress_text(text, quantOneStep, model_parameters, unknown_tokens):
 
 
 def serialize_id_vocab(filepath, vocab, unknown=None):
-    print(vocab)
-    print(unknown)
     vocab_file = open(filepath, "w")
     for token in vocab.keys():
         vocab_file.write(token)

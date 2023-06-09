@@ -5,16 +5,16 @@ import os
 import csv
 
 if __name__ == '__main__':
-    bible_file = open("../test data/bible.txt", 'r')
+    bible_file = open("D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\bible.txt", 'r')
     bible_string = bible_file.read()#[:6000]
     bible_file.close()
-    target_dir = f"D:\\asaf\\יב\\compression learning\\tutorial\\test data\\compressed_not_bible"
+    target_dir = f"D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\compressed_not_bible"
     output = []
     for rnn_units in [1, 5, 10, 20, 50, 100, 250, 500]:
         for embedding_dim in [1, 5, 10, 20, 50, 100, 250, 500]:
 
-            compress("../test data/not_bible.txt",
-                     f"D:\\asaf\\יב\\compression learning\\tutorial\\test data\\compressed_not_bible",
+            compress("D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\not_bible.txt",
+                     target_dir,
                      ModelParameters(embedding_dim, rnn_units), bible_string)
             model_size = os.stat(f"{target_dir}/{model_filename}").st_size
             data_size = os.stat(f"{target_dir}/{data_filename}").st_size

@@ -1,14 +1,12 @@
 from prediction_model.quantizable_model import QuantModelWrapper, get_quantizable_model, convert_to_tflite
-import time
 from prediction_model.training_utils import get_trained_model
-from compression.compression_utils import compress_text, serialize_id_vocab, deserialize_id_vocab
+from compression.compression_utils import compress_text, serialize_id_vocab
 from compression.compression_constants import *
 from prediction_model.model_constants import ModelParameters
 import tensorflow as tf
 import os
 
 def compress(filepath, target_dir, model_parameters, train_target=None):
-    start = time.time()
     input_file = open(filepath, 'r')
     input_string = input_file.read()
     input_file.close()
@@ -35,12 +33,5 @@ def compress(filepath, target_dir, model_parameters, train_target=None):
 
     model_parameters.serialize(f"{target_dir}/{model_parameters_filename}")
 
-    end = time.time()
-    print('\nRun time:', end - start)
-
-
 if __name__ == '__main__':
-    # input_file = open("../test data/bible.txt", 'r')
-    # input_string = input_file.read()
-    # input_file.close()
-    compress("D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\bible.txt", f"D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\compressed_not_bible", ModelParameters(20, 100))
+    compress("D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\bible.txt", f"D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\compressed_bible", ModelParameters(20, 100))

@@ -1,7 +1,6 @@
 from prediction_model.model_constants import *
-from  prediction_model.quantizable_model import QuantModelWrapper
+from prediction_model.quantizable_model import QuantModelWrapper
 import tensorflow as tf
-import time
 from compression.huffman import get_bits_from_file, extract_data_bits, decode_first_token_in_stream
 from compression.compression_utils import get_quant_model_probs, deserialize_id_vocab
 from compression.compression_constants import *
@@ -35,4 +34,4 @@ def decompress(source_dir, target_path, model_parameters=None):
 
 
 if __name__ == '__main__':
-    decompress("../test data/compressed_not_bible", "../test data/decompressed_not_bible")
+    decompress("D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\compressed_bible", f"D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\bible.txt")
