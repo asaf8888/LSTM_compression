@@ -28,15 +28,9 @@ def convert_to_tflite(model):
     return tflite_model
 
 
-class QuantOneStep:
+class QuantModelWrapper:
     def __init__(self, interpreter, vocab):
         self.interpreter = interpreter
-        print(interpreter.get_output_details()[0]['name'])
-        print(interpreter.get_output_details()[1]['name'])
-        print(interpreter.get_output_details()[2]['name'])
-        print(interpreter.get_input_details()[0]['name'])
-        print(interpreter.get_input_details()[1]['name'])
-        print(interpreter.get_input_details()[2]['name'])
         self.vocab = vocab
         self.ids_from_chars = tf.keras.layers.StringLookup(
             vocabulary=list(vocab), mask_token=None)

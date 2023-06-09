@@ -1,15 +1,8 @@
 from prediction_model.model_constants import *
-from prediction_model.quantizable_model import QuantOneStep
+from prediction_model.quantizable_model import QuantModelWrapper
 from compression.huffman import encode_token, fit_data_to_bytes
 from compression.compression_constants import unknown_character_token
 import numpy as np
-
-def get_model_probs(one_step_model, input_token, states):
-    probs, states = one_step_model.get_probs(input_token, states=states)
-    probs = probs[0].numpy().tolist()
-    correctly_ordered_vocabulary = one_step_model.chars_from_ids.get_vocabulary()
-    return tuple(zip(list(correctly_ordered_vocabulary), probs)), states
-
 
 def get_quant_model_probs(quant_one_step_model, input_token, states):
     probs, states = quant_one_step_model.get_probabilty_weights(input_token, states)

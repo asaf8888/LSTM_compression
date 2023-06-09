@@ -1,4 +1,4 @@
-from prediction_model.quantizable_model import QuantOneStep, get_quantizable_model, convert_to_tflite
+from prediction_model.quantizable_model import QuantModelWrapper, get_quantizable_model, convert_to_tflite
 import time
 from prediction_model.training_utils import get_trained_model
 from compression.compression_utils import compress_text, serialize_id_vocab, deserialize_id_vocab
@@ -26,7 +26,7 @@ def compress(filepath, target_dir, model_parameters, train_target=None):
         f.write(quant_model)
 
     interpreter = tf.lite.Interpreter(model_content=quant_model)
-    quant_one_step = QuantOneStep(interpreter, vocab)
+    quant_one_step = QuantModelWrapper(interpreter, vocab)
     data_in_bytes = compress_text(input_string, quant_one_step, model_parameters, unknown)
 
     compressed_file = open(f"{target_dir}/{data_filename}", "wb")
@@ -43,4 +43,4 @@ if __name__ == '__main__':
     # input_file = open("../test data/bible.txt", 'r')
     # input_string = input_file.read()
     # input_file.close()
-    compress("D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\bible.txt", f"D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\compressed_not_bible", ModelParameters(256, 32))
+    compress("D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\bible.txt", f"D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\compressed_not_bible", ModelParameters(20, 100))
