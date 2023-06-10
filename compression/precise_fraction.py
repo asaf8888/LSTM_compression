@@ -41,6 +41,18 @@ class PreciseFraction:
     def __repr__(self):
         return f"{self.numerator}/{self.denominator}"
 
+    def print_real(self):
+        print(self.numerator / self.denominator)
+
+    @staticmethod
+    def from_binary(binary_string):
+        power = 1
+        result = PreciseFraction(0, 1)
+        for bit in binary_string:
+            result += PreciseFraction(int(bit), 2**power)
+            power += 1
+        return result
+
 if __name__ == '__main__':
     a = PreciseFraction(1, 23476)
     b = PreciseFraction(1, 6)

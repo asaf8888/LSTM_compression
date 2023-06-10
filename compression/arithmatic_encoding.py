@@ -14,13 +14,36 @@ def arithmetically_encode(list_of_probs, token, curr_range, unknown_tokens=None)
         start_idx += prob[1] * range_factor
     return (start_idx, end_index)
 
-
-
-if __name__ == '__main__':
-    list_of_probs = (("a", 0.5), ("b", 0.2), ("c", 0.2), ("d", 0.1))
-    list_of_probs2 = (("a", 0.1), ("b", 0.6), ("c", 0.2), ("d", 0.1))
+def get_number_in_range(target_range):
     curr_range = (PreciseFraction(0,1), PreciseFraction(1,1))
-    curr_range = arithmetically_encode(list_of_probs, "a", curr_range)
-    curr_range = arithmetically_encode(list_of_probs2, "a", curr_range)
-    curr_range = arithmetically_encode(list_of_probs, "b", curr_range)
-    print(curr_range)
+    target = (target_range[0] + target_range[1]) * PreciseFraction(1, 2)
+    target.print_real()
+    result = []
+
+    while(not((curr_range[0] > target_range[0]) & (curr_range[0] < target_range[1]))):
+        middle = (curr_range[0] + curr_range[1]) * PreciseFraction(1, 2)
+        if middle > target:
+            result.append('0')
+            curr_range =  (curr_range[0], middle)
+        else:
+            result.append('1')
+            curr_range = (middle, curr_range[1])
+        curr_range[0].print_real()
+
+    return ''.join(result)
+
+def decode_token(list_of_probs, number, curr_range, unknown_tokens=None):
+    start_idx = curr_range[0]
+    range_factor = curr_range[1] - curr_range[0]
+    if unknown_tokens:
+        tokens, prob = unknown_tokens
+        single_token_prob = prob / len(tokens)
+        list_of_probs.extend([(token, single_token_prob) for token in tokens])
+    list_of_probs = map(lambda x: (x[0], PreciseFraction(*x[1].as_integer_ratio())),
+                        sorted(list_of_probs, key=lambda x: x[1], reverse=True))
+    for prob in list_of_probs:
+        end_idx = start_idx + prob[1] * range_factor
+        if (number > start_idx) & (number < end_idx):
+            return prob[0], (start_idx, end_idx)
+        start_idx = end_idx
+
