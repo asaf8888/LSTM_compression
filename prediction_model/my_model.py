@@ -5,7 +5,7 @@ class MyModel(tf.keras.Model):
         super().__init__(self)
         self.embedding = tf.keras.layers.Embedding(vocab_size, embedding_dim)
         self.rnn = tf.keras.layers.LSTM(rnn_units, return_sequences=True, return_state=True)
-        self.dense = tf.keras.layers.Dense(vocab_size)
+        self.dense = tf.keras.layers.Dense(vocab_size, activation='softmax')
 
     def call(self, inputs, states=None, return_state=False, training=False):
         x = inputs

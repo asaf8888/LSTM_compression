@@ -34,4 +34,4 @@ def compress(filepath, target_dir, model_parameters, train_target=None):
     model_parameters.serialize(f"{target_dir}/{model_parameters_filename}")
 
 if __name__ == '__main__':
-    compress("D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\bible.txt", f"D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\compressed_bible", ModelParameters(20, 100))
+    compress("D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\bible.txt", f"D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\compressed_bible_2", ModelParameters(50, 100))

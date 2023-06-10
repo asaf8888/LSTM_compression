@@ -40,7 +40,7 @@ def get_trained_model(text, model_parameters, unknown_token_cutoff=0):
     dataset = prepare_training_dataset(masked_text, vocab)
     vocab_size = len(vocab)
     model = MyModel(vocab_size=vocab_size, embedding_dim=model_parameters.embedding_dim, rnn_units=model_parameters.rnn_units)
-    loss = tf.losses.SparseCategoricalCrossentropy(from_logits=True)
+    loss = tf.losses.SparseCategoricalCrossentropy(from_logits=False)
     model.compile(optimizer='adam', loss=loss, metrics='accuracy')
     model.fit(dataset, epochs=EPOCHS)
     return model, (vocab, unknown)
