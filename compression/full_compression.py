@@ -1,10 +1,11 @@
 from prediction_model.quantizable_model import QuantModelWrapper, get_quantizable_model, convert_to_tflite
 from prediction_model.training_utils import get_trained_model
-from compression.compression_utils import compress_text, serialize_id_vocab
+from compression.compression_utils import compress_text_huffman, compress_text_arithmetic, serialize_id_vocab
 from compression.compression_constants import *
 from prediction_model.model_constants import ModelParameters
 import tensorflow as tf
 import os
+import json
 
 def compress(filepath, target_dir, model_parameters, train_target=None):
     input_file = open(filepath, 'r')
@@ -20,18 +21,29 @@ def compress(filepath, target_dir, model_parameters, train_target=None):
     quantizable_model = get_quantizable_model(model, model_parameters)
     quant_model = convert_to_tflite(quantizable_model)
 
-    with open(f"{target_dir}/{model_filename}", 'wb') as f:
-        f.write(quant_model)
+    file = open(f"{target_dir}/{model_filename}", "wb")
+    file.write(quant_model)
+    file.close()
 
     interpreter = tf.lite.Interpreter(model_content=quant_model)
     quant_one_step = QuantModelWrapper(interpreter, vocab)
-    data_in_bytes = compress_text(input_string, quant_one_step, model_parameters, unknown)
+    data_in_bytes = compress_text_arithmetic(input_string, quant_one_step, model_parameters, unknown)#compress_text_huffman(input_string, quant_one_step, model_parameters, unknown)
 
     compressed_file = open(f"{target_dir}/{data_filename}", "wb")
     compressed_file.write(data_in_bytes)
     compressed_file.close()
 
     model_parameters.serialize(f"{target_dir}/{model_parameters_filename}")
+    meta_data = {"character count": len(input_string)}
+    meta_data_json_representation = json.dumps(meta_data)
+    file = open(f"{target_dir}/{meta_data_filename}", "w")
+    file.write(meta_data_json_representation)
+    file.close()
+
 
 if __name__ == '__main__':
+    input_file = open("D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\bible.txt", 'r')
+    input_string = input_file.read()
+    input_file.close()
     compress("D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\bible.txt", f"D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\compressed_bible_2", ModelParameters(50, 100))
+

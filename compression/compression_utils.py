@@ -1,5 +1,7 @@
 from compression.huffman import encode_token, fit_data_to_bytes
 from compression.compression_constants import unknown_character_token
+from precise_fraction import PreciseFraction
+from arithmatic_encoding import arithmetically_encode, get_number_in_range, expend_range_encode
 import numpy as np
 
 def get_quant_model_probs(quant_one_step_model, input_token, states):
@@ -9,7 +11,52 @@ def get_quant_model_probs(quant_one_step_model, input_token, states):
     return tuple(zip(list(correctly_ordered_vocabulary), probs)), states
 
 
-def compress_text(text, quantOneStep, model_parameters, unknown_tokens):
+def compress_text_arithmetic(text, quantOneStep, model_parameters, unknown_tokens):
+    states = model_parameters.default_init_states
+    carry = model_parameters.default_init_carry
+
+    first_char = text[0]
+    next_char = first_char
+    # resulting_range = (PreciseFraction(0,1), PreciseFraction(1,1))
+    resulting_range = (0,1)
+    counter = 0
+    result = [format(ord(first_char), 'b').rjust(8, '0')]
+    for token in text[1:len(text)]:
+        print(str(counter) + f"/{len(text)-1}")
+        list_of_probs, (states, carry) = get_quant_model_probs(quantOneStep, next_char, (states, carry))
+
+        next_char = token
+        resulting_range = arithmetically_encode(list_of_probs, token, resulting_range, unknown_tokens)
+        if counter > 4050:
+            print(resulting_range)
+        resulting_range, bit = expend_range_encode(resulting_range)
+        while bit:
+            if (result[-1] == '2') & (bit != '2'):
+                num_of_twos = 1
+                while result[-num_of_twos-1] == '2':
+                    num_of_twos += 1
+                result[-num_of_twos] = bit
+                for i in range(num_of_twos-1, 0, -1):
+                    result[-i] = str(1-int(bit))
+                result.append(str(1-int(bit)))
+            else:
+                result.append(bit)
+            if counter > 4050:
+                print(result[-10:])
+            resulting_range, bit = expend_range_encode(resulting_range)
+        counter +=1
+
+    while result[-1] == '2':
+        result.pop()
+    result.append('1')
+    result = "".join(result)
+    print(resulting_range)
+
+    data_in_bytes = fit_data_to_bytes(result)
+    return data_in_bytes
+
+
+def compress_text_huffman(text, quantOneStep, model_parameters, unknown_tokens):
     states = model_parameters.default_init_states
     carry = model_parameters.default_init_carry
 
