@@ -1,29 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b5557532-d607-4b63-83c9-9188108b851d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/compression/show_results.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/compression/test_compression_size.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rnn-tutorial-rnnlm/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rnn-tutorial-rnnlm/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rnn-tutorial-rnnlm/NOTICE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rnn-tutorial-rnnlm/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rnn-tutorial-rnnlm/RNNLM.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rnn-tutorial-rnnlm/data/reddit-comments-2015-08.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rnn-tutorial-rnnlm/data/trained-model-theano.npz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rnn-tutorial-rnnlm/requirements.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rnn-tutorial-rnnlm/rnn_theano.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rnn-tutorial-rnnlm/train-theano.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../rnn-tutorial-rnnlm/utils.py" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmd/cmd_compress.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/tutorial.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/asaf_compression.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compression/arithmatic_encoding.py" beforeDir="false" afterPath="$PROJECT_DIR$/compression/arithmatic_encoding.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compression/compression_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/compression/compression_utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/compression/full_compression.py" beforeDir="false" afterPath="$PROJECT_DIR$/compression/full_compression.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prediction_model/model_constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_model/model_constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compression/my_consugation.py" beforeDir="false" afterPath="$PROJECT_DIR$/compression/my_consugation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deprecated/bunched_huffman.py" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/bunched_huffman.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meta_utils/test_compression_size.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_utils/test_compression_size.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prediction_model/quantizable_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_model/quantizable_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test data/compressed_not_bible/data" beforeDir="false" afterPath="$PROJECT_DIR$/test data/compressed_not_bible/data" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test data/compressed_not_bible/model_parameters.json" beforeDir="false" afterPath="$PROJECT_DIR$/test data/compressed_not_bible/model_parameters.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test data/compressed_not_bible/model_quant.tflite" beforeDir="false" afterPath="$PROJECT_DIR$/test data/compressed_not_bible/model_quant.tflite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prediction_model/training_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_model/training_utils.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -234,6 +229,7 @@
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
+  <component name="ProjectId" id="2RHvZTylnD2FuUF4q8Dbhtmwtim" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -275,11 +271,26 @@
       <pane id="Scope" />
     </panes>
   </component>
-  <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/Programs/Python/Python39/Lib/site-packages/docx" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/asaf/twelve grade/compression learning/asaf_compression",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  }
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\asaf\יב\compression learning\asaf_compression\prediction_model" />
+      <recent name="D:\asaf\יב\compression learning\asaf_compression\compression" />
+      <recent name="D:\asaf\יב\compression learning\tutorial\prediction_model" />
+      <recent name="D:\asaf\יב\compression learning\tutorial" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\asaf\יב\compression learning\tutorial\small_bible_model\lstm" />
       <recent name="D:\asaf\יב\compression learning\tutorial\compression" />
@@ -287,26 +298,31 @@
       <recent name="D:\asaf\יב\compression learning\tutorial\test data" />
       <recent name="D:\asaf\יב\compression learning\tutorial\training_checkpoints" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\asaf\יב\compression learning\tutorial\prediction_model" />
-      <recent name="D:\asaf\יב\compression learning\tutorial" />
-    </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Python.show_results">
-    <configuration name="full_compression" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="tutorial" />
+  <component name="RunManager" selected="Python.cmd_compress">
+    <configuration name="cmd_compress" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="asaf_compression" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cmd" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cmd/cmd_compress.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="full_compression" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="asaf_compression" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -326,40 +342,19 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="model_constants" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="tutorial" />
+    <configuration name="interface" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="asaf_compression" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/prediction_model" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/prediction_model/model_constants.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="my_consugation" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="tutorial" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/compression" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/compression/my_consugation.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/interface.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -369,7 +364,7 @@
       <method v="2" />
     </configuration>
     <configuration name="show_results" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="tutorial" />
+      <module name="asaf_compression" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -389,19 +384,19 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test_compression_size" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="tutorial" />
+    <configuration name="test_compression_size (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="asaf_compression" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/compression" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/meta_utils" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/compression/test_compression_size.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/meta_utils/test_compression_size.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -412,14 +407,15 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.show_results" />
-        <item itemvalue="Python.test_compression_size" />
+        <item itemvalue="Python.cmd_compress" />
         <item itemvalue="Python.full_compression" />
-        <item itemvalue="Python.my_consugation" />
-        <item itemvalue="Python.model_constants" />
+        <item itemvalue="Python.interface" />
+        <item itemvalue="Python.test_compression_size (1)" />
+        <item itemvalue="Python.show_results" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>

@@ -1,7 +1,7 @@
-from compression.huffman import encode_token, fit_data_to_bytes
-from compression.compression_constants import unknown_character_token
-from precise_fraction import PreciseFraction
-from arithmatic_encoding import arithmetically_encode, get_number_in_range, expend_range_encode
+from asaf_compression.compression.huffman import encode_token, fit_data_to_bytes
+from asaf_compression.compression.compression_constants import unknown_character_token
+from asaf_compression.compression.precise_fraction import PreciseFraction
+from asaf_compression.compression.arithmatic_encoding import arithmetically_encode, get_number_in_range, expend_range_encode
 import numpy as np
 
 def get_quant_model_probs(quant_one_step_model, input_token, states):
@@ -22,13 +22,10 @@ def compress_text_arithmetic(text, quantOneStep, model_parameters, unknown_token
     counter = 0
     result = [format(ord(first_char), 'b').rjust(8, '0')]
     for token in text[1:len(text)]:
-        print(str(counter) + f"/{len(text)-1}")
         list_of_probs, (states, carry) = get_quant_model_probs(quantOneStep, next_char, (states, carry))
 
         next_char = token
         resulting_range = arithmetically_encode(list_of_probs, token, resulting_range, unknown_tokens)
-        if counter > 4050:
-            print(resulting_range)
         resulting_range, bit = expend_range_encode(resulting_range)
         while bit:
             if (result[-1] == '2') & (bit != '2'):
@@ -41,8 +38,6 @@ def compress_text_arithmetic(text, quantOneStep, model_parameters, unknown_token
                 result.append(str(1-int(bit)))
             else:
                 result.append(bit)
-            if counter > 4050:
-                print(result[-10:])
             resulting_range, bit = expend_range_encode(resulting_range)
         counter +=1
 
@@ -50,7 +45,6 @@ def compress_text_arithmetic(text, quantOneStep, model_parameters, unknown_token
         result.pop()
     result.append('1')
     result = "".join(result)
-    print(resulting_range)
 
     data_in_bytes = fit_data_to_bytes(result)
     return data_in_bytes

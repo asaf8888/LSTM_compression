@@ -1,6 +1,6 @@
-from compression.full_compression import compress
-from prediction_model.model_constants import ModelParameters
-from compression.compression_constants import *
+from asaf_compression.compression.full_compression import compress
+from asaf_compression.prediction_model.model_constants import ModelParameters
+from asaf_compression.compression.compression_constants import *
 import os
 import csv
 
@@ -10,8 +10,8 @@ if __name__ == '__main__':
     bible_file.close()
     target_dir = f"D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\compressed_not_bible"
     output = []
-    for rnn_units in [1, 5, 10, 20, 50, 100, 250, 500]:
-        for embedding_dim in [1, 5, 10, 20, 50, 100, 250, 500]:
+    for rnn_units in [100]:
+        for embedding_dim in [50]:
 
             compress("D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\not_bible.txt",
                      target_dir,

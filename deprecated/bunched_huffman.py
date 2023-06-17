@@ -1,4 +1,4 @@
-from compression.huffman import create_coding
+from asaf_compression.compressionhuffman import create_coding
 import math
 import numpy as np
 from matplotlib import pyplot as plt

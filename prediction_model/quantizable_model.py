@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow import keras
 from keras import layers
-from prediction_model.model_constants import *
+from asaf_compression.prediction_model.model_constants import *
 import numpy as np
 
 rng = np.random.default_rng()

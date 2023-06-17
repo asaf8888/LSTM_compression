@@ -1,0 +1,2 @@
+rnn_units,embedding_dim,model_size,data_size
+100,50,91296,881

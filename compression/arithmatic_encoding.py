@@ -1,7 +1,7 @@
 import time
 
 
-from precise_fraction import PreciseFraction
+from asaf_compression.compression.precise_fraction import PreciseFraction
 def arithmetically_encode(list_of_probs, token, curr_range, unknown_tokens=None):
     start_idx = curr_range[0]
     range_factor = curr_range[1] - curr_range[0]
@@ -43,7 +43,6 @@ def get_number_in_range(target_range):
     curr_range = (PreciseFraction(0,1), PreciseFraction(1,1))
     target = (target_range[0] + target_range[1]) * PreciseFraction(1, 2)
     result = []
-    target.print_real()
 
     while(not((curr_range[0] > target_range[0]) & (curr_range[0] < target_range[1]))):
         middle = (curr_range[0] + curr_range[1]) * PreciseFraction(1, 2)
@@ -80,11 +79,7 @@ def decode_token(list_of_probs, curr_range, bit_stream, curr_target_range, unkno
         list_of_probs.extend([(token, single_token_prob) for token in tokens])
     list_of_probs = sorted(list_of_probs, key=lambda x: x[1], reverse=True)#map(lambda x: (x[0], PreciseFraction(*x[1].as_integer_ratio())),sorted(list_of_probs, key=lambda x: x[1], reverse=True))
     while True:
-        if len(bit_stream) < 10:
-            print("stuff:" + str(curr_range))
         start_idx = curr_target_range[0]
-        if len(bit_stream) < 10:
-            print(bit_stream)
         for prob in list_of_probs:
             end_idx = start_idx + prob[1] * range_factor
             if (curr_range[0] >= start_idx):
