@@ -1,7 +1,6 @@
 from asaf_compression.compression.huffman import encode_token, fit_data_to_bytes
 from asaf_compression.compression.compression_constants import unknown_character_token
-from asaf_compression.compression.precise_fraction import PreciseFraction
-from asaf_compression.compression.arithmatic_encoding import arithmetically_encode, get_number_in_range, expend_range_encode
+from asaf_compression.compression.arithmatic_encoding import arithmetically_encode, expend_range_encode
 import numpy as np
 
 def get_quant_model_probs(quant_one_step_model, input_token, states):

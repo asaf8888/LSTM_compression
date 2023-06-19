@@ -5,16 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5557532-d607-4b63-83c9-9188108b851d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cmd/cmd_compress_advanced.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmd/cmd_decompress.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/cmd_compress.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/cmd_compress.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compression/arithmatic_encoding.py" beforeDir="false" afterPath="$PROJECT_DIR$/compression/arithmatic_encoding.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compression/compression_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/compression/compression_utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compression/full_compression.py" beforeDir="false" afterPath="$PROJECT_DIR$/compression/full_compression.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compression/my_consugation.py" beforeDir="false" afterPath="$PROJECT_DIR$/compression/my_consugation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prediction_model/model_constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_model/model_constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prediction_model/training_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_model/training_utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

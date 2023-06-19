@@ -6,7 +6,6 @@ import tensorflow as tf
 from asaf_compression.compression.huffman import get_bits_from_file, extract_data_bits, decode_first_token_in_stream
 from asaf_compression.compression.compression_utils import get_quant_model_probs, deserialize_id_vocab
 from asaf_compression.compression.compression_constants import *
-from asaf_compression.compression.precise_fraction import PreciseFraction
 from asaf_compression.compression.arithmatic_encoding import decode_token, expend_range_decode
 import os
 
