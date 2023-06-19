@@ -6,8 +6,8 @@ import tensorflow as tf
 from asaf_compression.compression.huffman import get_bits_from_file, extract_data_bits, decode_first_token_in_stream
 from asaf_compression.compression.compression_utils import get_quant_model_probs, deserialize_id_vocab
 from asaf_compression.compression.compression_constants import *
-from precise_fraction import PreciseFraction
-from arithmatic_encoding import decode_token, expend_range_decode
+from asaf_compression.compression.precise_fraction import PreciseFraction
+from asaf_compression.compression.arithmatic_encoding import decode_token, expend_range_decode
 import os
 
 def decompress(source_dir, target_path):
@@ -36,6 +36,7 @@ def decompress(source_dir, target_path):
     curr_range = (0,1)
     bit_stream = collections.deque(list(bin_number))
     for i in range(length):
+        print(f"{i}/{length}")
         list_of_probs, states = get_quant_model_probs(one_step_model, next_char, states)
         decoded_token, curr_range, bit_stream, curr_target_range = decode_token(list_of_probs, curr_range, bit_stream, curr_target_range,
                                                                                 unknown_tokens=unknown)

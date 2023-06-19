@@ -34,7 +34,11 @@ def create_coding_tree(list_of_probs, unknown_tokens=None):
     single_letter_q = []
     complex_q = deque()
     if unknown_tokens:
-        tokens, prob = unknown_tokens
+        tokens = unknown_tokens
+        dict_probs = dict(list_of_probs)
+        prob = dict_probs[unknown_character_token]
+        dict_probs.pop(unknown_character_token)
+        list_of_probs = list(dict_probs.items())
         single_token_prob = prob / len(tokens)
         list_of_probs.extend([(token, single_token_prob) for token in tokens])
     for token, prob in list_of_probs:

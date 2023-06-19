@@ -22,6 +22,7 @@ def compress_text_arithmetic(text, quantOneStep, model_parameters, unknown_token
     counter = 0
     result = [format(ord(first_char), 'b').rjust(8, '0')]
     for token in text[1:len(text)]:
+        print(f"{counter}/{len(text)-1}")
         list_of_probs, (states, carry) = get_quant_model_probs(quantOneStep, next_char, (states, carry))
 
         next_char = token

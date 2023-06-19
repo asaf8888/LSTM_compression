@@ -1,12 +1,16 @@
 import time
-
+from asaf_compression.compression.compression_constants import unknown_character_token
 
 from asaf_compression.compression.precise_fraction import PreciseFraction
 def arithmetically_encode(list_of_probs, token, curr_range, unknown_tokens=None):
     start_idx = curr_range[0]
     range_factor = curr_range[1] - curr_range[0]
     if unknown_tokens:
-        tokens, prob = unknown_tokens
+        tokens = unknown_tokens
+        dict_probs = dict(list_of_probs)
+        prob = dict_probs[unknown_character_token]
+        dict_probs.pop(unknown_character_token)
+        list_of_probs = list(dict_probs.items())
         single_token_prob = prob / len(tokens)
         list_of_probs.extend([(token, single_token_prob) for token in tokens])
     # list_of_probs = map(lambda x: (x[0], PreciseFraction(*x[1].as_integer_ratio())), sorted(list_of_probs, key=lambda x: x[1], reverse=True))

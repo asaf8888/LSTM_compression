@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b5557532-d607-4b63-83c9-9188108b851d" name="Default Changelist" comment="" />
+    <list default="true" id="b5557532-d607-4b63-83c9-9188108b851d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/cmd/cmd_compress_advanced.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmd/cmd_decompress.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/cmd_compress.py" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/cmd_compress.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compression/arithmatic_encoding.py" beforeDir="false" afterPath="$PROJECT_DIR$/compression/arithmatic_encoding.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compression/compression_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/compression/compression_utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compression/full_compression.py" beforeDir="false" afterPath="$PROJECT_DIR$/compression/full_compression.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/compression/my_consugation.py" beforeDir="false" afterPath="$PROJECT_DIR$/compression/my_consugation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prediction_model/model_constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_model/model_constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prediction_model/training_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_model/training_utils.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -261,17 +272,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/asaf/twelve grade/compression learning/asaf_compression&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/User/AppData/Local/Programs/Python/Python39/Lib/site-packages/asaf_compression/cmd",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\AppData\Local\Programs\Python\Python39\Lib\site-packages\asaf_compression\cmd" />
       <recent name="D:\asaf\יב\compression learning\asaf_compression\prediction_model" />
       <recent name="D:\asaf\יב\compression learning\asaf_compression\compression" />
       <recent name="D:\asaf\יב\compression learning\tutorial\prediction_model" />
@@ -285,7 +297,7 @@
       <recent name="D:\asaf\יב\compression learning\tutorial\training_checkpoints" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.cmd_compress">
+  <component name="RunManager" selected="Python.cmd_decompress">
     <configuration name="cmd_compress" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="asaf_compression" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -299,6 +311,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cmd/cmd_compress.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="cmd_decompress" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="asaf_compression" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/cmd" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/cmd/cmd_decompress.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -349,27 +382,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="show_results" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="asaf_compression" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/compression" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/compression/show_results.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="test_compression_size (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="asaf_compression" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -393,11 +405,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.cmd_decompress" />
         <item itemvalue="Python.cmd_compress" />
         <item itemvalue="Python.full_compression" />
         <item itemvalue="Python.interface" />
         <item itemvalue="Python.test_compression_size (1)" />
-        <item itemvalue="Python.show_results" />
       </list>
     </recent_temporary>
   </component>

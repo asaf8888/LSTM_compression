@@ -15,12 +15,12 @@ def get_vocabulary_and_mask(text, cutoff=0):
     vocab = dict(sorted(vocab.items(), key=lambda item: item[1], reverse=True))
     keys = list(vocab.keys())
     id_vocab = {keys[i]: i for i in range(len(keys))}
-    vocab[unknown_character_token] = len(vocab)
     masked_text = [token if token in vocab.keys() else unknown_character_token for token in text]
+    id_vocab[unknown_character_token] = len(vocab)
     return masked_text, id_vocab, unknown
 
 
-def prepare_training_dataset(text, vocab, seq_lentgh=100, batch_size=64):
+def prepare_training_dataset(text, vocab, batch_size, seq_lentgh=100):
     ids = [vocab[token] for token in text]
 
     ids_dataset = tf.data.Dataset.from_tensor_slices(ids)
@@ -35,14 +35,14 @@ def prepare_training_dataset(text, vocab, seq_lentgh=100, batch_size=64):
     return dataset
 
 
-def get_trained_model(text, model_parameters, unknown_token_cutoff=0):
+def get_trained_model(text, model_parameters, batch_size, epochs, unknown_token_cutoff):
     masked_text, vocab, unknown = get_vocabulary_and_mask(text, unknown_token_cutoff)
-    dataset = prepare_training_dataset(masked_text, vocab)
+    dataset = prepare_training_dataset(masked_text, vocab, batch_size=batch_size)
     vocab_size = len(vocab)
     model = MyModel(vocab_size=vocab_size, embedding_dim=model_parameters.embedding_dim, rnn_units=model_parameters.rnn_units)
     loss = tf.losses.SparseCategoricalCrossentropy(from_logits=False)
     model.compile(optimizer='adam', loss=loss, metrics='accuracy')
-    model.fit(dataset, epochs=EPOCHS)
+    model.fit(dataset, epochs=epochs)
     return model, (vocab, unknown)
 
 

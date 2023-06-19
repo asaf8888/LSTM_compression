@@ -3,20 +3,21 @@ from asaf_compression.prediction_model.training_utils import get_trained_model
 from asaf_compression.compression.compression_utils import compress_text_huffman, compress_text_arithmetic, serialize_id_vocab
 from asaf_compression.compression.compression_constants import *
 from asaf_compression.prediction_model.model_constants import ModelParameters
+from asaf_compression.prediction_model.model_constants import *
 import tensorflow as tf
 import os
 import json
 
-def compress(filepath, target_dir, model_parameters, train_target=None):
+def compress(filepath, target_dir, model_parameters, batch_size=default_batch_size, epochs=EPOCHS, unknown_token_cutoff=0, train_target=None):
     input_file = open(filepath, 'r')
     input_string = input_file.read()
     input_file.close()
     if not os.path.exists(target_dir):
         os.makedirs(target_dir)
     if train_target is None:
-        model, (vocab, unknown) = get_trained_model(input_string, model_parameters)
+        model, (vocab, unknown) = get_trained_model(input_string, model_parameters, batch_size=batch_size, epochs=epochs, unknown_token_cutoff=unknown_token_cutoff)
     else:
-        model, (vocab, unknown) = get_trained_model(train_target, model_parameters)
+        model, (vocab, unknown) = get_trained_model(train_target, model_parameters, batch_size=batch_size, epochs=epochs, unknown_token_cutoff=unknown_token_cutoff)
     serialize_id_vocab(f"{target_dir}/{vocab_filename}", vocab, unknown)
     quantizable_model = get_quantizable_model(model, model_parameters)
     quant_model = convert_to_tflite(quantizable_model)

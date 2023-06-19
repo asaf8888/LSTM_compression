@@ -2,6 +2,7 @@ import tensorflow as tf
 from tensorflow import keras
 from keras import layers
 from asaf_compression.prediction_model.model_constants import *
+from asaf_compression.compression.compression_constants import *
 import numpy as np
 
 rng = np.random.default_rng()
@@ -38,6 +39,8 @@ class QuantModelWrapper:
             vocabulary=self.ids_from_chars.get_vocabulary(), invert=True, mask_token=None)
 
     def get_probabilty_weights(self, input_token, states):
+        if input_token not in self.vocab.keys():
+            input_token = unknown_character_token
         input_ids = np.array([[self.vocab[input_token]]], dtype=np.float32)
         self.interpreter.allocate_tensors()
         input_details = self.interpreter.get_input_details()

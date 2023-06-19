@@ -1,6 +1,7 @@
 import numpy as np
 import json
 EPOCHS = 20
+default_batch_size = 16
 
 
 class ModelParameters:
@@ -31,3 +32,5 @@ class ModelParameters:
         file.close()
         dict_representation = json.loads(json_representation)
         return ModelParameters(dict_representation["embedding_dim"], dict_representation["rnn_units"])
+
+default_params = ModelParameters(50, 100)
