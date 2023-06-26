@@ -22,8 +22,6 @@ def decompress(source_dir, target_path):
     next_char = first_char
     output_tokens = [first_char]
     bin_number = input_data[8:]
-    # fraction = PreciseFraction.from_binary(bin_number)
-    # start_index = 8
 
     file = open(f"{source_dir}/{meta_data_filename}", "r")
     json_representation = file.read()
@@ -44,11 +42,6 @@ def decompress(source_dir, target_path):
             curr_range, curr_target_range, should_expend = expend_range_decode(curr_range, curr_target_range)
         next_char = decoded_token
         output_tokens.append(decoded_token)
-    # while len(input_data) - start_index > 0:
-    #     list_of_probs, states = get_quant_model_probs(one_step_model, next_char, states)
-    #     decoded_token, start_index = decode_first_token_in_stream(list_of_probs, input_data, start_index, unknown_tokens=unknown)
-    #     next_char = decoded_token
-    #     output_tokens.append(decoded_token)
     output_text = "".join(output_tokens)
     output_file = open(target_path, "w")
     output_file.write(output_text)
