@@ -43,8 +43,5 @@ def compress(filepath, target_dir, model_parameters, batch_size=default_batch_si
 
 
 if __name__ == '__main__':
-    input_file = open("D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\bible.txt", 'r')
-    input_string = input_file.read()
-    input_file.close()
-    compress("D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\bible.txt", f"D:\\asaf\\יב\\compression learning\\data and stuff\\test data\\compressed_bible_2", ModelParameters(50, 100))
+    compress("D:\\asaf\\twelve grade\\compression learning\\data and stuff\\test data\\not_bible.txt", f"D:\\asaf\\twelve grade\\compression learning\\data and stuff\\test data\\compressed_not_bible", ModelParameters(50, 100), batch_size=1, epochs=1)
 
