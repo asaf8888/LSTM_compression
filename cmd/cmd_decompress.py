@@ -1,5 +1,4 @@
-import asaf_compression.compression.my_consugation as consug
-from asaf_compression.prediction_model.model_constants import ModelParameters
+import compression.my_consugation as consug
 import sys
 import os
 filepath = sys.argv[1]

@@ -1,12 +1,12 @@
 import collections
 
-from asaf_compression.prediction_model.model_constants import *
-from asaf_compression.prediction_model.quantizable_model import QuantModelWrapper
+from prediction_model.model_constants import *
+from prediction_model.quantizable_model import QuantModelWrapper
 import tensorflow as tf
-from asaf_compression.compression.huffman import get_bits_from_file, extract_data_bits, decode_first_token_in_stream
-from asaf_compression.compression.compression_utils import get_quant_model_probs, deserialize_id_vocab
-from asaf_compression.compression.compression_constants import *
-from asaf_compression.compression.arithmatic_encoding import decode_token, expend_range_decode
+from compression.huffman import get_bits_from_file, extract_data_bits, decode_first_token_in_stream
+from compression.compression_utils import get_quant_model_probs, deserialize_id_vocab
+from compression.compression_constants import *
+from compression.arithmatic_encoding import decode_token, expend_range_decode
 import os
 
 def decompress_arithmatic(source_dir, target_path):

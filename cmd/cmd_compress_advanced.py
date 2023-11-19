@@ -1,5 +1,5 @@
-import asaf_compression.compression.full_compression as fc
-from asaf_compression.prediction_model.model_constants import *
+import compression.full_compression as fc
+from prediction_model.model_constants import *
 import sys
 import os
 filepath = sys.argv[1]

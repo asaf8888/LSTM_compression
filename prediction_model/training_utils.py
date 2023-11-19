@@ -1,6 +1,5 @@
-from asaf_compression.prediction_model.my_model import MyModel
-from asaf_compression.prediction_model.model_constants import *
-from asaf_compression.compression.compression_constants import unknown_character_token
+from prediction_model.my_model import MyModel
+from compression.compression_constants import unknown_character_token
 from collections import Counter
 import tensorflow as tf
 

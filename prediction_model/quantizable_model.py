@@ -1,8 +1,8 @@
 import tensorflow as tf
 from tensorflow import keras
 from keras import layers
-from asaf_compression.prediction_model.model_constants import *
-from asaf_compression.compression.compression_constants import *
+from prediction_model.model_constants import *
+from compression.compression_constants import *
 import numpy as np
 
 rng = np.random.default_rng()

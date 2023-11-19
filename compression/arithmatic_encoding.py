@@ -1,5 +1,5 @@
 import time
-from asaf_compression.compression.compression_constants import unknown_character_token
+from compression.compression_constants import unknown_character_token
 
 def arithmetically_encode(list_of_probs, token, curr_range, unknown_tokens=None):
     start_idx = curr_range[0]

@@ -1,9 +1,9 @@
-from asaf_compression.prediction_model.quantizable_model import QuantModelWrapper, get_quantizable_model, convert_to_tflite
-from asaf_compression.prediction_model.training_utils import get_trained_model
-from asaf_compression.compression.compression_utils import compress_text_huffman, compress_text_arithmetic, serialize_id_vocab
-from asaf_compression.compression.compression_constants import *
-from asaf_compression.prediction_model.model_constants import ModelParameters
-from asaf_compression.prediction_model.model_constants import *
+from prediction_model.quantizable_model import QuantModelWrapper, get_quantizable_model, convert_to_tflite
+from prediction_model.training_utils import get_trained_model
+from compression.compression_utils import compress_text_huffman, compress_text_arithmetic, serialize_id_vocab
+from compression.compression_constants import *
+from prediction_model.model_constants import ModelParameters
+from prediction_model.model_constants import *
 import tensorflow as tf
 import os
 import json

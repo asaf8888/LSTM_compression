@@ -1,6 +1,6 @@
-from asaf_compression.compression.full_compression import compress
-from asaf_compression.prediction_model.model_constants import ModelParameters
-from asaf_compression.compression.compression_constants import *
+from compression.full_compression import compress
+from prediction_model.model_constants import ModelParameters
+from compression.compression_constants import *
 import os
 import csv
 
