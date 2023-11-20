@@ -1,3 +1,4 @@
+from prediction_model.my_model import ModelFactory
 from prediction_model.quantizable_model import QuantModelWrapper, get_quantizable_model, convert_to_tflite
 from prediction_model.training_utils import get_trained_model
 from compression.compression_utils import compress_text_huffman, compress_text_arithmetic, serialize_id_vocab
@@ -14,10 +15,11 @@ def compress(filepath, target_dir, model_parameters, batch_size=default_batch_si
     input_file.close()
     if not os.path.exists(target_dir):
         os.makedirs(target_dir)
+    model_factory = ModelFactory(model_parameters, ModelFactory.ModelType.SINGLE_USE_MODEL)
     if train_target is None:
-        model, (vocab, unknown) = get_trained_model(input_string, model_parameters, batch_size=batch_size, epochs=epochs, unknown_token_cutoff=unknown_token_cutoff)
+        model, (vocab, unknown) = get_trained_model(input_string, model_factory, batch_size=batch_size, epochs=epochs, unknown_token_cutoff=unknown_token_cutoff)
     else:
-        model, (vocab, unknown) = get_trained_model(train_target, model_parameters, batch_size=batch_size, epochs=epochs, unknown_token_cutoff=unknown_token_cutoff)
+        model, (vocab, unknown) = get_trained_model(train_target, model_factory, batch_size=batch_size, epochs=epochs, unknown_token_cutoff=unknown_token_cutoff)
     serialize_id_vocab(f"{target_dir}/{vocab_filename}", vocab, unknown)
     quantizable_model = get_quantizable_model(model, model_parameters)
     quant_model = convert_to_tflite(quantizable_model)

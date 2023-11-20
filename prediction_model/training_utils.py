@@ -1,4 +1,4 @@
-from prediction_model.my_model import MyModel
+from prediction_model.my_model import SingleUseModel
 from compression.compression_constants import unknown_character_token
 from collections import Counter
 import tensorflow as tf
@@ -34,11 +34,11 @@ def prepare_training_dataset(text, vocab, batch_size, seq_lentgh=100):
     return dataset
 
 
-def get_trained_model(text, model_parameters, batch_size, epochs, unknown_token_cutoff):
+def get_trained_model(text, model_factory, batch_size, epochs, unknown_token_cutoff):
     masked_text, vocab, unknown = get_vocabulary_and_mask(text, unknown_token_cutoff)
     dataset = prepare_training_dataset(masked_text, vocab, batch_size=batch_size)
     vocab_size = len(vocab)
-    model = MyModel(vocab_size=vocab_size, embedding_dim=model_parameters.embedding_dim, rnn_units=model_parameters.rnn_units)
+    model = model_factory.get_model(vocab_size)
     loss = tf.losses.SparseCategoricalCrossentropy(from_logits=False)
     model.compile(optimizer='adam', loss=loss, metrics='accuracy')
     model.fit(dataset, epochs=epochs)

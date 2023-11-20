@@ -1,6 +1,6 @@
 import tensorflow as tf
-
-class MyModel(tf.keras.Model):
+from enum import Enum
+class SingleUseModel(tf.keras.Model):
     def __init__(self, vocab_size, embedding_dim, rnn_units):
         super().__init__(self)
         self.embedding = tf.keras.layers.Embedding(vocab_size, embedding_dim)
@@ -19,3 +19,43 @@ class MyModel(tf.keras.Model):
             return x, (states, carry)
         else:
             return x
+
+
+class SplitReadyModel(tf.keras.Model):
+    def __init__(self, vocab_size, embedding_dim, rnn_units):
+        super().__init__(self)
+        self.base_model = SingleUseModel(vocab_size, embedding_dim, rnn_units)
+
+    def call(self, inputs, states=None, return_state=False, training=False):
+        return self.base_model(inputs, states=states, return_state=return_state, training=training)
+
+    def split(self):
+        pass
+
+class ModelFactory:
+    class ModelType(Enum):
+        SINGLE_USE_MODEL = 1
+        SPLIT_READY_MODEL = 2
+
+    def __init__(self, model_parameters, model_type):
+        self.model_parameters = model_parameters
+        self.model_type = model_type
+
+    def get_single_use_model(self, vocab_size):
+        model_parameters = self.model_parameters
+        return SingleUseModel(vocab_size=vocab_size, embedding_dim=model_parameters.embedding_dim,
+                               rnn_units=model_parameters.rnn_units)
+
+    def get_split_ready_model(self, vocab_size):
+        model_parameters = self.model_parameters
+        return SplitReadyModel(vocab_size=vocab_size, embedding_dim=model_parameters.embedding_dim,
+                              rnn_units=model_parameters.rnn_units)
+
+    def get_model(self, vocab_size):
+        if self.model_type == self.ModelType.SINGLE_USE_MODEL:
+            return self.get_single_use_model(vocab_size)
+        elif self.model_type == self.ModelType.SPLIT_READY_MODEL:
+            return self.get_split_ready_model(vocab_size)
+        else:
+            raise Exception("missing or unknown model type configuration")
+
