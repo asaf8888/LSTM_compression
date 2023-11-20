@@ -1,3 +1,4 @@
+import keras
 import tensorflow as tf
 from enum import Enum
 class SingleUseModel(tf.keras.Model):
@@ -24,13 +25,59 @@ class SingleUseModel(tf.keras.Model):
 class SplitReadyModel(tf.keras.Model):
     def __init__(self, vocab_size, embedding_dim, rnn_units):
         super().__init__(self)
-        self.base_model = SingleUseModel(vocab_size, embedding_dim, rnn_units)
+        self.embedding = tf.keras.layers.Embedding(vocab_size, embedding_dim)
+        self.rnn = tf.keras.layers.LSTM(rnn_units, return_sequences=True, return_state=True, name="lstm")
+        self.dense1 = tf.keras.layers.Dense(rnn_units, activation="relu", name="dense1")
+        self.dense2 = tf.keras.layers.Dense(vocab_size, activation='softmax')
 
     def call(self, inputs, states=None, return_state=False, training=False):
-        return self.base_model(inputs, states=states, return_state=return_state, training=training)
+        x = inputs
+        x = self.embedding(x, training=training)
+        if states is None:
+            states = self.rnn.get_initial_state(x)
+        x, states, carry = self.rnn(x, initial_state=states, training=training)
+        x = self.dense1(x, training=training)
+        x = self.dense2(x, training=training)
+
+        if return_state:
+            return x, (states, carry)
+        else:
+            return x
 
     def split(self):
-        pass
+        model_a = SplitFirstHalf(self.embedding, self.rnn, self.dense1)
+        model_b = SplitSecondHalf(self.dense2)
+        return model_a, model_b
+
+class SplitFirstHalf(keras.Model):
+    def __init__(self, embedding, rnn, dense1):
+        super().__init__(self)
+        self.embedding = embedding
+        self.rnn = rnn
+        self.dense1 = dense1
+
+
+    def call(self, inputs, states=None, return_state=False, training=False):
+        x = inputs
+        x = self.embedding(x, training=training)
+        if states is None:
+            states = self.rnn.get_initial_state(x)
+        x, states, carry = self.rnn(x, initial_state=states, training=training)
+        x = self.dense1(x, training=training)
+
+        if return_state:
+            return x, (states, carry)
+        else:
+            return x
+class SplitSecondHalf(keras.Model):
+    def __init__(self, dense2):
+        super().__init__(self)
+        self.dense2 = dense2
+
+    def call(self, x, training=False):
+
+        x = self.dense2(x, training=training)
+        return x
 
 class ModelFactory:
     class ModelType(Enum):

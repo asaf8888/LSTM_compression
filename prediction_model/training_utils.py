@@ -1,4 +1,6 @@
-from prediction_model.my_model import SingleUseModel
+import keras
+
+from prediction_model.my_model import SingleUseModel, ModelFactory
 from compression.compression_constants import unknown_character_token
 from collections import Counter
 import tensorflow as tf
@@ -43,5 +45,3 @@ def get_trained_model(text, model_factory, batch_size, epochs, unknown_token_cut
     model.compile(optimizer='adam', loss=loss, metrics='accuracy')
     model.fit(dataset, epochs=epochs)
     return model, (vocab, unknown)
-
-

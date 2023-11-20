@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b5557532-d607-4b63-83c9-9188108b851d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/compression/full_compression.py" beforeDir="false" afterPath="$PROJECT_DIR$/compression/full_compression.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prediction_model/my_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_model/my_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prediction_model/training_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_model/training_utils.py" afterDir="false" />
@@ -293,7 +294,7 @@
       <recent name="D:\asaf\יב\compression learning\tutorial\training_checkpoints" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.add_to_context_menu">
+  <component name="RunManager" selected="Python.full_compression">
     <configuration name="add_to_context_menu" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="asaf_compression" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -401,10 +402,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.full_compression" />
         <item itemvalue="Python.add_to_context_menu" />
         <item itemvalue="Python.cmd_compress_advanced" />
         <item itemvalue="Python.test_compression_size (1)" />
-        <item itemvalue="Python.full_compression" />
         <item itemvalue="Python.cmd_decompress" />
       </list>
     </recent_temporary>
