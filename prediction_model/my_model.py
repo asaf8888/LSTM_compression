@@ -79,14 +79,33 @@ class SplitSecondHalf(keras.Model):
         x = self.dense2(x, training=training)
         return x
 
+
+class CombinedModel(keras.Model):
+    def __init__(self, first_half, second_half):
+        super().__init__(self)
+        self.first_half = first_half
+        self.second_half = second_half
+
+    def call(self, inputs, states=None, return_state=False, training=False):
+        if return_state:
+            x, (states, carry) = self.first_half(inputs, states=states, return_state=return_state, training=False)
+            x = self.second_half(x, training=training)
+            return x, (states, carry)
+        else:
+            x = self.first_half(inputs, states=states, return_state=return_state, training=False)
+            x = self.second_half(x, training=training)
+            return x
+
 class ModelFactory:
     class ModelType(Enum):
         SINGLE_USE_MODEL = 1
         SPLIT_READY_MODEL = 2
+        EXISTING_MODEL = 3
 
-    def __init__(self, model_parameters, model_type):
+    def __init__(self, model_parameters, model_type, model=None):
         self.model_parameters = model_parameters
         self.model_type = model_type
+        self.model = model
 
     def get_single_use_model(self, vocab_size):
         model_parameters = self.model_parameters
@@ -98,11 +117,16 @@ class ModelFactory:
         return SplitReadyModel(vocab_size=vocab_size, embedding_dim=model_parameters.embedding_dim,
                               rnn_units=model_parameters.rnn_units)
 
+    def get_existing_model(self):
+        return self.model
+
     def get_model(self, vocab_size):
         if self.model_type == self.ModelType.SINGLE_USE_MODEL:
             return self.get_single_use_model(vocab_size)
         elif self.model_type == self.ModelType.SPLIT_READY_MODEL:
             return self.get_split_ready_model(vocab_size)
+        elif self.model_type == self.ModelType.EXISTING_MODEL:
+            return self.get_existing_model()
         else:
             raise Exception("missing or unknown model type configuration")
 

@@ -45,3 +45,4 @@ def get_trained_model(text, model_factory, batch_size, epochs, unknown_token_cut
     model.compile(optimizer='adam', loss=loss, metrics='accuracy')
     model.fit(dataset, epochs=epochs)
     return model, (vocab, unknown)
+

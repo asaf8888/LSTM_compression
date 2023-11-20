@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b5557532-d607-4b63-83c9-9188108b851d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compression/full_compression.py" beforeDir="false" afterPath="$PROJECT_DIR$/compression/full_compression.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prediction_model/my_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_model/my_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prediction_model/training_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/prediction_model/training_utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
